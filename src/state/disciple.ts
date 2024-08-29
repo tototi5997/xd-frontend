@@ -56,10 +56,10 @@ export const useAllDisciples = (param: DiscipleQueryParams) => {
 };
 
 export const useMyDisciples = () => {
-  // const { id: owner_id } = useUserDeatil();
+  const { id: owner_id } = useUserDeatil();
   const { data } = useQuery({
     queryKey: ["my_disciples"],
-    queryFn: () => getAllDisciplesAPI({}),
+    queryFn: () => getAllDisciplesAPI({ owner_id }),
   });
   return { ...data };
 };

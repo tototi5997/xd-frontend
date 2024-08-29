@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Menu } from "antd";
-import { ItemType, MenuItemType } from "antd/es/menu/hooks/useItems";
 import c from "classnames";
 import s from "./index.module.less";
 import Icon from "@/components/icon";
 import IconButton from "@/components/iconButton";
 import { useTranslation } from "react-i18next";
+import { ItemType, MenuItemType } from "antd/es/menu/interface";
 
 const Slider = () => {
   const [menuPackup, setMenuState] = useState(false);
