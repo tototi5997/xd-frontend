@@ -1,23 +1,30 @@
 import IconButton from "@/components/iconButton";
 import useModal from "@/hooks/useModal";
 import { Disciple } from "@/state/disciple";
-import { Tag } from "antd";
+import { message, Tag } from "antd";
 import { Children } from "react";
 import { AttrThemeMap } from "@/constants";
 import s from "./index.module.less";
 import c from "classnames";
+import copy from "copy-to-clipboard";
 
-const AttrItem = ({ label, value }: { label: string; value?: number | string | undefined }) => {
+const AttrItem = ({ label, value, copier }: { label: string; value?: number | string | undefined; copier?: boolean }) => {
+  const handleClickVal = () => {
+    if (copier && value) {
+      copy(value as string);
+      message.success("已复制");
+    }
+  };
   return (
     <div className="fbh fbjsb fbac text-[12px]">
       <div className="gray-1">{label}</div>
-      <div>{value}</div>
+      <div onClick={handleClickVal}>{value}</div>
     </div>
   );
 };
 
 const DiscipleDetail = (props: Disciple) => {
-  const { owner, mian_attribute, mian_attribute_val, sub_attributes, want_for_main, want_for_main_val } = props;
+  const { owner, mian_attribute, mian_attribute_val, sub_attributes, want_for_main, want_for_main_val, id } = props;
 
   const modal = useModal();
 
@@ -29,11 +36,12 @@ const DiscipleDetail = (props: Disciple) => {
       </div>
 
       <section className="mt-20 fbv gp10">
-        <AttrItem label="归属于：" value={owner} />
-        <AttrItem label="主属性：" value={mian_attribute} />
-        <AttrItem label="属性值：" value={mian_attribute_val + "%"} />
-        <AttrItem label="需要主属性：" value={want_for_main ?? "-"} />
-        <AttrItem label="需要主属性值：" value={want_for_main_val ? "> " + want_for_main_val + "%" : "-"} />
+        <AttrItem label="弟子ID:" value={id} copier />
+        <AttrItem label="归属于:" value={owner} />
+        <AttrItem label="主属性:" value={mian_attribute} />
+        <AttrItem label="属性值:" value={mian_attribute_val + "%"} />
+        <AttrItem label="需要主属性:" value={want_for_main ?? "-"} />
+        <AttrItem label="需要主属性值:" value={want_for_main_val ? "> " + want_for_main_val + "%" : "-"} />
         <div className="fbh fbjsb fbac">
           <div className="gray-1">附加属性</div>
           <div className="fbh gp2">

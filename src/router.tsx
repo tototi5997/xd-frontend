@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import AllDisciples from "./pages/AllDisciples";
 import Disciples from "./pages/Disciples";
 import MyDisciples from "./pages/MyDisciples";
+import Home from "./pages/Home";
 
 export type RouterType = "hash" | "browser";
 
@@ -21,7 +22,11 @@ export const RouterComponent = routerMap[ROUTER_TYPE];
 
 // 路由配置
 export const routerConfig: RouteObject[] = [
-  { path: "/", element: <Navigate to="/disciples/all" replace /> },
+  { path: "/", element: <Navigate to="/home" replace /> },
+  {
+    path: "/home",
+    element: <Home />,
+  },
   {
     path: "/register",
     element: <Register />,

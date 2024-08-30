@@ -1,7 +1,7 @@
 import DisciplesList from "@/components/DisciplesList";
 import { DESIGN_CONFIG } from "@/styles/design.config";
 import DesignComponent from "@/components/DesignComponent";
-import { Button, Form, InputNumber, Select } from "antd";
+import { Form, Input, InputNumber, Select } from "antd";
 import { useForm } from "antd/es/form/Form";
 import Icon from "@/components/icon";
 import { useAllDisciples } from "@/state/disciple";
@@ -11,6 +11,7 @@ import { DiscipleQueryParams } from "@/api/disciple";
 import c from "classnames";
 import s from "./index.module.less";
 import { useNavigate } from "react-router-dom";
+import XDButton from "@/components/Button";
 // import useModal from "@/hooks/useModal";
 
 const AllDisciples = () => {
@@ -52,10 +53,11 @@ const AllDisciples = () => {
       <DesignComponent theme={DESIGN_CONFIG.Button}>
         <div>
           <div className="fbh gp10">
-            {/* <Button onClick={handlePublishNewDisciple}>发布</Button> */}
-            <Button onClick={handleToMyDisciples}>我发布的</Button>
-            <Button icon={<Icon name="search" />} onClick={handleQueryDisciples} />
-            <Button onClick={handleClearQuerys}>Clear</Button>
+            <XDButton onClick={handleToMyDisciples}>我发布的</XDButton>
+            <XDButton onClick={handleQueryDisciples}>
+              <Icon name="search" />
+            </XDButton>
+            <XDButton onClick={handleClearQuerys}>Clear</XDButton>
           </div>
 
           <Form layout="inline" className="mt-20" form={form} initialValues={{ mian_attribute_id: -1 }} onValuesChange={onFormChange}>
@@ -64,6 +66,9 @@ const AllDisciples = () => {
             </Form.Item>
             <Form.Item label="词条值" name="mian_attribute_val">
               <InputNumber inputMode="numeric" className="w-90" controls={false} />
+            </Form.Item>
+            <Form.Item label="徒弟ID" name="disciple_id">
+              <Input className="w-120" placeholder="请输入徒弟ID" />
             </Form.Item>
           </Form>
 

@@ -1,10 +1,10 @@
 import DesignComponent from "@/components/DesignComponent";
 import { DESIGN_CONFIG } from "@/styles/design.config";
-import { Button } from "antd";
 import DisciplesList from "@/components/DisciplesList";
 import { useNavigate } from "react-router-dom";
 import { Disciple, useMyDisciples } from "@/state/disciple";
 import useModal from "@/hooks/useModal";
+import XDButton from "@/components/Button";
 import c from "classnames";
 import s from "./index.module.less";
 
@@ -32,8 +32,8 @@ const MyDisciples = () => {
       <DesignComponent theme={DESIGN_CONFIG.Button}>
         <div>
           <div className="fbh gp10">
-            <Button onClick={handlePublishNewDisciple}>发布</Button>
-            <Button onClick={handleToAllDisciple}>全部</Button>
+            <XDButton onClick={handleToAllDisciple}>全部</XDButton>
+            <XDButton onClick={handlePublishNewDisciple}>发布</XDButton>
           </div>
 
           <DisciplesList data={data} className="mt-20" showDelete onDelete={handleDeleteDisciple} />

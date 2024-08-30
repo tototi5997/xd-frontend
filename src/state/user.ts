@@ -18,7 +18,7 @@ export const useUserActions = () => {
     mutationFn: loginAPI,
     onSuccess: (data) => {
       if (data.data) {
-        navigate("/disciples");
+        navigate("/home");
       } else message.error(data.message);
     },
   });

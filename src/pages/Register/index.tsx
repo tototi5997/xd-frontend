@@ -20,7 +20,7 @@ const Register = () => {
   };
 
   return (
-    <div className="wh100p pr fbh fbac fbjc">
+    <div className={c(s.register, "wh100p pr fbh fbac fbjc relative")}>
       <section className={c(s.register_form, "rounded-[20px] p-30")}>
         <div className="text-[20px] font-[600]">注册</div>
         <DesignComponent theme={DESIGN_CONFIG.Input}>

@@ -7,6 +7,7 @@ export type DiscipleQueryParams = {
   mian_attribute_id?: number;
   mian_attribute_val?: number;
   owner_id?: number;
+  disciple_id?: string;
 };
 
 export type DiscipleCreateParams = {
@@ -21,6 +22,10 @@ export type DiscipleCreateParams = {
 
 export const getAllDisciplesAPI = (params: DiscipleQueryParams): Promise<{ data?: Disciple[]; total?: number }> => {
   return service.post("/disciple", params);
+};
+
+export const getDisciplesRankAPI = (): Promise<{ data?: Disciple[] }> => {
+  return service.get("/disciple/rank");
 };
 
 export const addNewDiscipleAPI = (params: DiscipleCreateParams): Promise<{ data?: any; message?: string }> => {

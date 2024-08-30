@@ -1,4 +1,4 @@
-import { addNewDiscipleAPI, deleteDiscipleAPI, DiscipleQueryParams, getAllDisciplesAPI } from "@/api/disciple";
+import { addNewDiscipleAPI, deleteDiscipleAPI, DiscipleQueryParams, getAllDisciplesAPI, getDisciplesRankAPI } from "@/api/disciple";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useUserDeatil } from "./user";
 import useModal from "@/hooks/useModal";
@@ -89,4 +89,12 @@ export const useDeleteDisciple = () => {
     },
   });
   return { deleteDisciple };
+};
+
+export const useDsiciplesRank = () => {
+  const { data } = useQuery({
+    queryKey: ["disciples_rank"],
+    queryFn: () => getDisciplesRankAPI(),
+  });
+  return { ...data };
 };

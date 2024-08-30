@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "HanChan";
+  src: url("./assets/front/hanchan.otf");
+  /* font-weight: normal;
+  font-style: normal; */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,6 +22,7 @@ body {
   height: 100vh;
   background-color: black;
   color: #fff;
+  font-family: "HanChan";
 }
 
 #root {
